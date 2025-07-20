@@ -1,0 +1,14 @@
+FROM node:18-bullseye-slim AS next
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+COPY . . 
+
+COPY docker/next/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+
+ENTRYPOINT ["docker-entrypoint"]
+
+CMD ["sh", "-c", "npm run build && npm start"]
