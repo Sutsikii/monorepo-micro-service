@@ -1,0 +1,47 @@
+{
+  "name": "monorepo-micro-service",
+  "version": "1.0.0",
+  "description": "Monorepo avec applications Next.js conteneurisées",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:admin\" \"npm run dev:frontend\"",
+    "dev:admin": "cd apps/admin && npm run dev",
+    "dev:frontend": "cd apps/frontend && npm run dev",
+    "build": "npm run build:admin && npm run build:frontend",
+    "build:admin": "cd apps/admin && npm run build",
+    "build:frontend": "cd apps/frontend && npm run build",
+    "start": "concurrently \"npm run start:admin\" \"npm run start:frontend\"",
+    "start:admin": "cd apps/admin && npm start",
+    "start:frontend": "cd apps/frontend && npm start",
+    "lint": "npm run lint:admin && npm run lint:frontend",
+    "lint:admin": "cd apps/admin && npm run lint",
+    "lint:frontend": "cd apps/frontend && npm run lint",
+    "install:all": "npm install",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart",
+    "clean": "npm run clean:admin && npm run clean:frontend",
+    "clean:admin": "rm -rf apps/admin/.next apps/admin/node_modules",
+    "clean:frontend": "rm -rf apps/frontend/.next apps/frontend/node_modules",
+    "reset": "npm run clean && npm run install:all"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "monorepo",
+    "nextjs",
+    "docker",
+    "microservices"
+  ],
+  "author": "",
+  "license": "MIT"
+} 
