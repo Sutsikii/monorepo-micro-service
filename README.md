@@ -1,6 +1,8 @@
 # Monorepo Micro-Service
 
-Architecture monorepo moderne avec deux applications Next.js conteneurisées.
+Architecture monorepo moderne avec deux applications Next.js conteneurisées. Le but étant de pouvoir ajouter autant de service personnalisés sur le répo, du GO, une API Express, etc...
+
+**Ceci est un projet de test, ne pas utiliser en PRODUCTION**
 
 ## Vue d'ensemble
 
@@ -9,10 +11,6 @@ Ce projet utilise une architecture **monorepo** avec :
 - **Frontend** : Interface utilisateur (port 3001)
 
 ## Démarrage rapide
-
-### Prérequis
-- Docker 20.10+
-- Docker Compose 2.0+
 
 ### Lancer l'ensemble
 ```bash
@@ -47,44 +45,6 @@ monorepo-micro-service/
 ```
 
 ## Configuration
-
-### Services Docker
-
-| Service | Port | Description |
-|---------|------|-------------|
-| admin | 3000 | Interface d'administration |
-| frontend | 3001 | Interface utilisateur |
-
-### Variables d'environnement
-- `NODE_ENV=production`
-- `PORT=3000` (interne)
-
-### Volumes
-- **Développement** : Montage des sources pour le hot-reload
-- **Production** : Volumes anonymes pour node_modules et .next
-
-## Dépannage
-
-### Problèmes courants
-
-1. **Ports déjà utilisés**
-   ```bash
-   # Vérifier les ports utilisés
-   netstat -tulpn | grep :3000
-   netstat -tulpn | grep :3001
-   ```
-
-2. **Problèmes de build**
-   ```bash
-   # Forcer la reconstruction
-   docker-compose build --no-cache
-   ```
-
-3. **Problèmes de permissions**
-   ```bash
-   # Corriger les permissions
-   sudo chown -R $USER:$USER ./apps/
-   ```
 
 ### Debugging
 
